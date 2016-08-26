@@ -6,6 +6,6 @@ Vue.use(RadonUI)
 
 /* eslint-disable no-new */
 new Vue({
-  el: 'body',
-  components: { App }
+    el: 'body',
+    components: { App }
 })
