@@ -32,22 +32,10 @@
         </rd-card>
         <rd-card-group>
             <rd-card title="概览" class="rd-col-24 ">
-                <div class="circle">
-                    <div class="circle-item rd-col-6 rd-col-sm-12">
-                        <rd-progress-circle :progress="progressCircleA"></rd-progress-circle>
-                        <div class="progress-title">1222</div>
-                    </div>
-                    <div class="circle-item rd-col-6 rd-col-sm-12">
-                        <rd-progress-circle :progress="progressCircleB"></rd-progress-circle>
-                        <div class="progress-title">1222</div>
-                    </div>
-                    <div class="circle-item rd-col-6 rd-col-sm-12">
-                        <rd-progress-circle :progress="progressCircleC"></rd-progress-circle>
-                        <div class="progress-title">1222</div>
-                    </div>
-                    <div class="circle-item rd-col-6 rd-col-sm-12">
-                        <rd-progress-circle :progress="progressCircleD"></rd-progress-circle>
-                        <div class="progress-title">1222</div>
+                <div class="circle rd-row-flex">
+                    <div class="circle-item rd-col-6 rd-col-sm-12" v-for="progressCircle in Progress">
+                        <rd-progress-circle :progress="progressCircle"></rd-progress-circle>
+                        <div class="progress-title">{{progressCircle.title}}</div>
                     </div>
                 </div>
             </rd-card>
@@ -106,7 +94,8 @@ export default {
                 count: '872',
                 icon: 'ion-person-stalker'
             }],
-            progressCircleA: {
+            Progress: [{
+                title: 'Messages',
                 percent: 50,
                 options: {
                     color: '#2db7f5',
@@ -115,8 +104,8 @@ export default {
                         return percent + '% '
                     }
                 }
-            },
-            progressCircleB: {
+            }, {
+                title: 'Links',
                 percent: 64,
                 options: {
                     color: '#8bc34a',
@@ -125,8 +114,8 @@ export default {
                         return percent + '% '
                     }
                 }
-            },
-            progressCircleC: {
+            }, {
+                title: 'Followers',
                 percent: 12,
                 options: {
                     color: '#ff5722',
@@ -135,8 +124,8 @@ export default {
                         return percent + '% '
                     }
                 }
-            },
-            progressCircleD: {
+            }, {
+                title: 'Downloads',
                 percent: 87,
                 options: {
                     color: '#673ab7',
@@ -145,7 +134,7 @@ export default {
                         return percent + '% '
                     }
                 }
-            },
+            }],
             switchA: {
                 size: 'small',
                 checked: false
