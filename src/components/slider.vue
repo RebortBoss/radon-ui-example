@@ -159,6 +159,10 @@
 </template>
 <script>
 export default {
+    props: {
+        state: Object,
+        toggle: Function
+    },
     data () {
         return {
             large: true,
@@ -199,11 +203,17 @@ export default {
             item.active = !current
             if (item.route) {
                 this.$route.router.go(item.route)
+                if (this.state.isMobile) {
+                    this.toggle()
+                }
             }
         },
         touchSubNav (sub) {
             if (sub.route) {
                 this.$route.router.go(sub.route)
+                if (this.state.isMobile) {
+                    this.toggle()
+                }
             }
         }
     }

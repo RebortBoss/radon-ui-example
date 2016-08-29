@@ -52,7 +52,7 @@
         <div class="dash-header-logo">
             <span class="dash-header-logo-text">RadonUI example</span>
         </div>
-        <nav-slider v-show="state.showSlider" transition="slide-left"></nav-slider>
+        <nav-slider v-show="state.showSlider" :toggle="toggle" :state="state" transition="slide-left"></nav-slider>
     </header>
 </template>
 

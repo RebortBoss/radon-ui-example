@@ -8,7 +8,18 @@
             width: 100%;
             text-align: right;
         } 
-    } 
+    }
+    @media screen and (max-width: 768px) {
+        .product {
+            padding: 1rem 0;
+            .table-card {
+                overflow-x: auto;
+                .rd-table {
+                    min-width: 40rem;
+                }
+            }
+        }
+    }
 </style>
 
 <template>
@@ -21,7 +32,7 @@
                 </rd-drop-button>
             </div>
         </rd-card>
-        <rd-card>
+        <rd-card class="table-card">
             <rd-table :table="productTable"></rd-table>
         </rd-card>
     </div>
