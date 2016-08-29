@@ -29,17 +29,17 @@ html {
 .dash-info-status .dash-card {
     background: none;
 }
-
-.dash-edit-body {
-    min-height: 45rem;
+.dash-content.slider-active {
+    padding-left: 12rem;
+    transition: padding .3s ease;
 }
 </style>
 <template>
     <div id="appRoot">
-        <!-- <nav-header :toggle-nav-menu="toggleNavMenu"></nav-header> -->
-        <rd-button @click="start">start</rd-button>
-        <rd-button @click="finish">finish</rd-button>
-        <rd-button @click="modal">modal test</rd-button>
+        <nav-header :state="headerState" :toggle="toggleSlider"></nav-header>
+        <div class="dash-content" :class="{ 'slider-active': headerState.showSlider && !headerState.isMobile}">
+            <router-view></router-view>
+        </div>
         <rd-modal></rd-modal>
         <rd-notification></rd-notification>
         <rd-preview></rd-preview>
@@ -55,32 +55,41 @@ import {
     rdDropButton
 } from 'radon-ui'
 
+import navHeader from './components/header.vue'
+
 export default {
+    data () {
+        return {
+            headerState: {
+                showSlider: true,
+                isMobile: false
+            }
+        }
+    },
     ready () {
-        this.$Progress.start()
+        this.$Loading.start(3000)
+        this.checkMobile()
+        window.addEventListener('resize', this.checkMobile)
     },
     components: {
+        navHeader,
+
+        // radon-ui
         rdButton,
         rdDropButton
     },
     methods: {
-        modal () {
-            this.$Modal.create(
-                '这里是标题',
-                '这里应该说点什么',
-                () => {
-                    this.$Notification.success('你点击了确认', '你点击了确认你点击了确认你点击了确认你点击了确认你点击了确认', 5000)
-                },
-                () => {
-                    this.$Notification.success('你点击了取消', '', 5000)
-                }
-            )
+        toggleSlider () {
+            this.headerState.showSlider = !this.headerState.showSlider
         },
-        start () {
-            this.$Progress.start()
-        },
-        finish () {
-            this.$Progress.finish()
+        checkMobile (e) {
+            if (window.document.body.offsetWidth > 768) {
+                this.headerState.showSlider = true
+                this.headerState.isMobile = false
+            } else {
+                this.headerState.showSlider = false
+                this.headerState.isMobile = true
+            }
         }
     }
 }

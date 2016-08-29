@@ -1,11 +1,8 @@
 import Vue from 'vue'
 import App from './App'
-import RadonUI from 'radon-ui/dist/components/install'
+import router from './route'
+import { RadonInstall } from 'radon-ui'
 
-Vue.use(RadonUI)
+Vue.use(RadonInstall)
 
-/* eslint-disable no-new */
-new Vue({
-    el: 'body',
-    components: { App }
-})
+router.start(App, 'app')
