@@ -1,12 +1,14 @@
 <style>
    .content {
         width: 100%;
-        height: 100vh;
+        min-height: 100vh;
    } 
 </style>
 
 <template>
-    <div class="content">2333</div>
+    <div class="content">
+        
+    </div>
 </template>
 
 <script>

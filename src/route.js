@@ -11,6 +11,18 @@ router.map({
         component: (resolve) => {
             require(['./views/index.vue'], resolve)
         }
+    },
+    '/order': {
+        name: 'order',
+        component: (resolve) => {
+            require(['./views/order.vue'], resolve)
+        }
+    },
+    '/product': {
+        name: 'product',
+        component: (resolve) => {
+            require(['./views/product.vue'], resolve)
+        }
     }
 })
 

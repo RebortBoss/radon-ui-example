@@ -29,9 +29,12 @@ html {
 .dash-info-status .dash-card {
     background: none;
 }
+.dash-content {
+    padding-top: 4rem;
+    transition: padding .3s ease;
+}
 .dash-content.slider-active {
     padding-left: 12rem;
-    transition: padding .3s ease;
 }
 </style>
 <template>
