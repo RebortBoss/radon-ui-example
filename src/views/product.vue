@@ -1,6 +1,6 @@
 <style lang="scss">
     .product {
-        padding: 1rem 2rem;
+        padding: 1rem;
         .action-content {
             display: flex;
         }
