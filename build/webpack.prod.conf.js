@@ -6,6 +6,8 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var CssRewritePlugin = require('css-rewrite-webpack-plugin')
+
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
@@ -39,6 +41,13 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.optimize.OccurenceOrderPlugin(),
     // extract css into its own file
     new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
+
+    new CssRewritePlugin({
+      fileReg: /\.css$/,
+      processor: function (source) {
+        return source.replace(/static\/fonts/g, '..\/fonts')
+      }
+    }),
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
